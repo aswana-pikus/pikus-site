@@ -5,6 +5,8 @@ const API_URL = "http://localhost:1337/api";
 export const getProducts = async () => {
   const res = await axios.get(`${API_URL}/products?populate=*`);
 
+  console.log("STRAPI RESPONSE:", res.data);
+
   return res.data.data.map((item: any) => ({
     id: item.id,
     ...item.attributes,
