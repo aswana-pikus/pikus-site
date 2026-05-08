@@ -1,5 +1,6 @@
-import "../styles/globals.css";
 import "@fontsource/inter";
+import "@fontsource/manrope";
+import "../styles/globals.css";
 import Navbar from "@/components/layout/Navbar";
 
 export const metadata = {

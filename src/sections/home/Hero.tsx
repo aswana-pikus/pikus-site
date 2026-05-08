@@ -1,12 +1,14 @@
+import { typography } from "@/lib/typography";
+
 export default function Hero() {
   return (
     <section className="py-24 text-center">
       <div className="max-w-3xl mx-auto px-6">
-        <h1 className="text-5xl font-bold tracking-tight">
+        <h1 className={typography.h1}>
           MDLI™ Technology
         </h1>
 
-        <p className="mt-6 text-[#757780] text-lg">
+        <p className="mt-6 text-[#757780] text-lg leading-relaxed">
           Precision-engineered vaping performance powered by Multi-Drive Low Impedance architecture.
         </p>
 
