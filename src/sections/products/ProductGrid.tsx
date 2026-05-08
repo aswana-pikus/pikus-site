@@ -21,7 +21,7 @@ export default function ProductGrid() {
     filter === "all"
       ? products
       : products.filter(
-          (p) => p.attributes.category === filter
+          (p) => p.category === filter
         );
 
   return (
@@ -43,18 +43,18 @@ export default function ProductGrid() {
               className="border rounded-2xl p-6 bg-white"
             >
               <h3 className="text-xl font-semibold">
-                {product.attributes.name}
+                {product.name}
               </h3>
 
               <p className="text-[#757780] mt-2">
-                {product.attributes.description}
+                {product.description}
               </p>
 
               <div className="mt-2 text-sm">
-                Category: {product.attributes.category}
+                Category: {product.category}
               </div>
 
-              {product.attributes.mdliOptimised && (
+              {product.mdliOptimised && (
                 <div className="mt-2 text-black text-sm">
                   MDLI™ Optimised
                 </div>
