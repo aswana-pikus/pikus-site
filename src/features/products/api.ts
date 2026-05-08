@@ -12,10 +12,16 @@ export const getProducts = async () => {
 };
 
 export const getProduct = async (id: string) => {
-  const res = await axios.get(`${API_URL}/products/${id}?populate=*`);
+  const res = await axios.get(
+    `${API_URL}/products?filters[id][$eq]=${id}&populate=*`
+  );
+
+  const product = res.data.data?.[0];
+
+  if (!product) return null;
 
   return {
-    id: res.data.data.id,
-    ...res.data.data.attributes,
+    id: product.id,
+    ...product.attributes,
   };
 };

@@ -8,6 +8,7 @@ export default async function ProductPage({
 }) {
   const product = await getProduct(params.id);
 
+  // ✅ THIS IS THE PART YOU ASKED ABOUT
   if (!product) {
     return notFound();
   }
