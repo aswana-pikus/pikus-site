@@ -1,4 +1,3 @@
-import { products } from "@/features/products/data";
 import { notFound } from "next/navigation";
 
 export default function ProductPage({
