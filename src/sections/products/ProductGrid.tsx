@@ -1,17 +1,28 @@
 "use client";
 
-import { useState } from "react";
-import { products } from "@/features/products/data";
-import { ProductCategory } from "@/features/products/types";
+import { useEffect, useState } from "react";
+import { getProducts } from "@/features/products/api";
 import ProductFilters from "@/components/products/ProductFilters";
 
 export default function ProductGrid() {
-  const [filter, setFilter] = useState<ProductCategory | "all">("all");
+  const [products, setProducts] = useState<any[]>([]);
+  const [filter, setFilter] = useState("all");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getProducts();
+      setProducts(data);
+    };
+
+    fetchData();
+  }, []);
 
   const filtered =
     filter === "all"
       ? products
-      : products.filter((p) => p.category === filter);
+      : products.filter(
+          (p) => p.attributes.category === filter
+        );
 
   return (
     <section className="py-24">
@@ -21,34 +32,30 @@ export default function ProductGrid() {
           PIKUS Products
         </h2>
 
-        <p className="mt-4 text-[#757780]">
-          Engineered devices powered by MDLI™ architecture.
-        </p>
-
         <ProductFilters selected={filter} onChange={setFilter} />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
 
           {filtered.map((product) => (
             <a
-              href={`/products/${product.id}`}
               key={product.id}
-              className="border rounded-2xl p-6 bg-white hover:shadow-md transition"
+              href={`/products/${product.id}`}
+              className="border rounded-2xl p-6 bg-white"
             >
               <h3 className="text-xl font-semibold">
-                {product.name}
+                {product.attributes.name}
               </h3>
 
-              <p className="mt-2 text-[#757780]">
-                {product.description}
+              <p className="text-[#757780] mt-2">
+                {product.attributes.description}
               </p>
 
-              <div className="mt-4 text-sm text-[#757780]">
-                Category: {product.category}
+              <div className="mt-2 text-sm">
+                Category: {product.attributes.category}
               </div>
 
-              {product.mdliOptimised && (
-                <div className="mt-2 text-sm text-black">
+              {product.attributes.mdliOptimised && (
+                <div className="mt-2 text-black text-sm">
                   MDLI™ Optimised
                 </div>
               )}
