@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================
+   PIKUS DESIGN SYSTEM
+========================= */
+
+:root {
+  --background: #f0f0f0;
+  --text: #1d1c1c;
+  --muted: #757780;
+  --accent: #ff5a00;
+}
+
+/* Global typography */
+body {
+  background: var(--background);
+  color: var(--text);
+  font-family: Inter, system-ui, sans-serif;
+  line-height: 1.6;
+}
+
+/* Smooth rendering */
+html {
+  scroll-behavior: smooth;
+}
