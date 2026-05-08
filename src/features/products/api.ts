@@ -13,7 +13,7 @@ export const getProducts = async () => {
 
 export const getProduct = async (id: string) => {
   const res = await axios.get(
-    `${API_URL}/products?filters[id][$eq]=${id}&populate=*`
+    `http://localhost:1337/api/products?filters[id][$eq]=${id}&populate=*`
   );
 
   const product = res.data.data?.[0];

@@ -1,14 +1,7 @@
 "use client";
 
-import { ProductCategory } from "@/features/products/types";
-
-type Props = {
-  selected: ProductCategory | "all";
-  onChange: (value: ProductCategory | "all") => void;
-};
-
-export default function ProductFilters({ selected, onChange }: Props) {
-  const filters: (ProductCategory | "all")[] = [
+export default function ProductFilters({ selected, onChange }: any) {
+  const categories = [
     "all",
     "disposable",
     "closed-pod",
@@ -17,16 +10,16 @@ export default function ProductFilters({ selected, onChange }: Props) {
   ];
 
   return (
-    <div className="flex gap-3 flex-wrap mt-6">
-      {filters.map((filter) => (
+    <div className="flex gap-3 mt-6">
+      {categories.map((cat) => (
         <button
-          key={filter}
-          onClick={() => onChange(filter)}
-          className={`px-4 py-2 rounded-full border text-sm ${
-            selected === filter ? "bg-black text-white" : ""
+          key={cat}
+          onClick={() => onChange(cat)}
+          className={`px-4 py-2 rounded ${
+            selected === cat ? "bg-black text-white" : "bg-gray-200"
           }`}
         >
-          {filter}
+          {cat}
         </button>
       ))}
     </div>
